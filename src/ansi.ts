@@ -6,7 +6,7 @@ export const ESC_CODE: string = "\u001B"
 /**
  * 图形再现参数的 Ansi 码表1（开启）
  */
-const Style1 = {
+const StyleMapping1 = {
     // 前景色
     'foreground': '38;2;',
     // 背景色
@@ -36,7 +36,7 @@ const Style1 = {
 /**
  * 图形再现参数的 Ansi 码表2（关闭）
  */
-const Style2 = {
+const StyleMapping2 = {
     // 前景色
     'foreground': '39',
     // 背景色
@@ -63,16 +63,16 @@ const Style2 = {
     'overline': '55',
 };
 
-export type Style1 = keyof typeof Style1
+export type Style1 = keyof typeof StyleMapping1
 export const EscapeSequence1 = (key: Style1, ...args: any[]) => {
-    const code = Style1[key];
+    const code = StyleMapping1[key];
     // return String.raw`${ESC_CODE}[${code}${args.join(';')}m`;
     return `${ESC_CODE}[${code}${args.join(';')}m`;
 }
 
-export type Style2 = keyof typeof Style2
+export type Style2 = keyof typeof StyleMapping2
 export const EscapeSequence2 = (key: Style2) => {
-    const code = Style2[key]
+    const code = StyleMapping2[key]
     // return String.raw`${ESC_CODE}[${code}m`;
     return `${ESC_CODE}[${code}m`;
 }
